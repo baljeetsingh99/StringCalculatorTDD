@@ -17,7 +17,7 @@ public class StringCalculatorTest {
         assertEquals(10, strCal.add("1,2,3,4")); //handling any amount of numbers
         assertEquals(13, strCal.add("1\n5,7")); //handling new lines
         assertEquals(16, strCal.add("1\n4\n7,4"));
-        assertEquals(3, strCal.add("//;\n1;2")); //handling different delimeter
+        assertEquals(3, strCal.add("//;\n1;2")); //handling different delimeter;
         assertEquals(8, strCal.add("//|\n2|3|3"));
         assertEquals(3, strCal.add("//;\n1;2"));
 

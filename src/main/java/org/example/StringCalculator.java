@@ -21,6 +21,7 @@ public class StringCalculator {
         for (String n : numArr) {
             int num = Integer.parseInt(n);
             if (num < 0) {
+
                 negativeNumbers.add(num);
             }
             sum += num;
