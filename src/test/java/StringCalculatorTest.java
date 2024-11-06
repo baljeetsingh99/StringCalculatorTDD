@@ -1,11 +1,17 @@
 import org.example.StringCalculator;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class StringCalculatorTest {
-    StringCalculator strCal = new StringCalculator();
+    private StringCalculator strCal;
+
+    @Before
+    public void setUp() {
+        strCal = new StringCalculator();
+    }
 
     @Test
     public void addEmptyStringTest(){
@@ -21,6 +27,9 @@ public class StringCalculatorTest {
         assertEquals(8, strCal.add("//|\n2|3|3"));
         assertEquals(3, strCal.add("//;\n1;2"));
 
+        assertEquals(11, strCal.GetCalledCount());
+        System.out.println(strCal.GetCalledCount());
+
 
     }
     @Test
@@ -31,6 +40,20 @@ public class StringCalculatorTest {
             assertEquals("Negative numbers not allowed: [-2, -4]", e.getMessage());
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void testGetCalledCount() throws Exception {
+
+        assertEquals(0, strCal.GetCalledCount());
+        strCal.add("1,2");
+        assertEquals(1, strCal.GetCalledCount());
+
+        strCal.add("3,4,5");
+        assertEquals(2, strCal.GetCalledCount());
+
+        strCal.add("//;\n1;2;3");
+        assertEquals(3, strCal.GetCalledCount());
     }
 
 

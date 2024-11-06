@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+     int callCount = 0;
 
     public int add(String number){
+        callCount++;
         if(number.isEmpty()){
             return 0;
         }
@@ -30,5 +32,9 @@ public class StringCalculator {
             throw new IllegalArgumentException("Negative numbers not allowed: " + negativeNumbers);
         }
         return sum;
+    }
+
+    public int GetCalledCount() {
+        return callCount;
     }
 }
