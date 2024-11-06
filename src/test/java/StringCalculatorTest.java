@@ -2,6 +2,7 @@ import org.example.StringCalculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StringCalculatorTest {
     StringCalculator strCal = new StringCalculator();
@@ -19,5 +20,19 @@ public class StringCalculatorTest {
         assertEquals(3, strCal.add("//;\n1;2")); //handling different delimeter
         assertEquals(8, strCal.add("//|\n2|3|3"));
         assertEquals(3, strCal.add("//;\n1;2"));
+
+
     }
+    @Test
+    public void testNegativeNumbersThrowException() throws Exception {
+        try {
+            strCal.add("1,-2,3,-4");
+        } catch (Exception e) {
+            assertEquals("Negative numbers not allowed: [-2, -4]", e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
 }

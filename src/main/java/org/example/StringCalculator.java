@@ -16,15 +16,18 @@ public class StringCalculator {
             number = number.substring(delimiterIndex + 1);
         }
         String[] numArr = number.split(defaultDeli);
+        ArrayList<Integer> negativeNumbers = new ArrayList<>();
         int sum = 0;
         for (String n : numArr) {
-            if(!n.isEmpty()){
-                int num = Integer.parseInt(n);
-                sum += num;
+            int num = Integer.parseInt(n);
+            if (num < 0) {
+                negativeNumbers.add(num);
             }
-
+            sum += num;
         }
-
+        if (!negativeNumbers.isEmpty()) {
+            throw new IllegalArgumentException("Negative numbers not allowed: " + negativeNumbers);
+        }
         return sum;
     }
 }
